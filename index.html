@@ -1,0 +1,131 @@
+<!DOCTYbuttonE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style>
+    body{
+      background-color: rgb(10, 10, 10);
+      font-family: Arial;
+    }
+    button{
+      border: none;
+      background-color: rgb(48, 48, 48);
+      color: white;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 30px;
+      margin-right: 10px;
+      height: 65px;
+      width: 65px;
+    }
+    .operation{
+      color: white;
+      font-size: 40px;
+      padding-top: 35px;
+      padding-left: 5px;
+    }
+    .operators{
+      background-color: orange;
+    }
+    .clear{
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <p class="operation"></p>
+  <p>
+    <button onclick="
+    calculation(1);
+      ">1</button>
+
+    <button onclick="
+    calculation(2);
+      ">2</button>
+
+    <button onclick="
+    calculation(3);
+      ">3</button>
+
+    <button onclick="
+    calculation(' + ');
+      " class="operators">+</button>
+  </p>
+  <p>
+    <button onclick="
+    calculation(4);
+      ">4</button>
+
+    <button onclick="
+    calculation(5);
+      ">5</button>
+
+    <button onclick="
+    calculation(6);
+      ">6</button>
+
+    <button onclick="
+    calculation(' - ');
+      " class="operators">-</button>
+  </p>
+  <p>
+    <button onclick="
+    calculation(7);
+      ">7</button>
+
+    <button onclick="
+    calculation(8);
+      ">8</button>
+
+    <button onclick="
+    calculation(9);
+      ">9</button>
+
+    <button onclick="
+    calculation(' * ');
+      " class="operators">*</button>
+  </p>
+
+  <p>
+    <button onclick="
+    calculation(0);
+      ">0</button>
+
+    <button onclick="
+    calculation('.');
+      ">.</button>
+
+    <button onclick="
+    numbers = eval(numbers);
+    display();
+    localStorage.setItem('numbers', numbers)
+      ">=</button>
+
+    <button onclick="
+    calculation(' / ');
+    " class="operators">/</button>
+
+  </p>
+  <button onclick="
+  numbers = '';
+  display();
+  localStorage.removeItem('numbers');
+  " class="clear">Clear</button>
+</body>
+<script>
+
+  let numbers = localStorage.getItem('numbers') || '';
+  
+  display();
+
+  function calculation(input){
+    numbers += input;
+    display();
+    localStorage.setItem('numbers', numbers);
+  }
+
+  function display(){
+    document.querySelector('.operation').innerHTML = numbers;
+  }
+</script>
+</html>
